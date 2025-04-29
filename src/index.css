@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Prata&display=swap');
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  transition: all 0.2s linear;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  background-color: #f7f7f7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+  color: #222;
+  font-family: 'Prata', sans-serif;
+}
+
+.teal{
+  color: #008080;
+}
+
+.prata-regular {
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Prata", serif;
+}
+
+.boo {
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Black Ops One", system-ui;
+}
+
+input,
+button,
+textarea,
+select {
+  border: none;
+  font: inherit;
+  /* outline: none; */
+}
+
+a.active hr {
+  display: block;
+}
+
+a.active {
+  color: #008080;
+}
+
