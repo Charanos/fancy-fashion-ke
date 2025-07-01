@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/frontend_assets/assets";
 
 const Navbar = () => {
+  const { showSearch, setShowSearch, getCartCount } = useContext(ShopContext);
   const [visible, setVisible] = React.useState(false);
   const toggleMenu = () => {
     setVisible(!visible);
+  };
+
+  // Toggle search function
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
   };
 
   return (
@@ -15,33 +22,48 @@ const Navbar = () => {
       </Link>
 
       <ul className="hidden lg:flex space-x-6 text-md font-semibold">
-        <NavLink to="/" className="flex flex-col items-center gap-1">
+        <NavLink
+          to="/"
+          className="flex hover:scale-105 flex-col items-center gap-1"
+        >
           <p className="uppercase">Home</p>
           <hr className="w-3/4 border-none h-[1.3px] bg-gray-800 hidden" />
         </NavLink>
 
-        <NavLink to="/collections" className="flex flex-col items-center gap-1">
+        <NavLink
+          to="/collections"
+          className="flex hover:scale-105 flex-col items-center gap-1"
+        >
           <p className="uppercase">Collections</p>
           <hr className="w-3/4 border-none h-[1.3px] bg-gray-800 hidden" />
         </NavLink>
 
-        <NavLink to="/about" className="flex flex-col items-center gap-1">
+        <NavLink
+          to="/about"
+          className="flex hover:scale-105 flex-col items-center gap-1"
+        >
           <p className="uppercase">About</p>
           <hr className="w-3/4 border-none h-[1.3px] bg-gray-800 hidden" />
         </NavLink>
 
-        <NavLink to="/contact" className="flex flex-col items-center gap-1">
+        <NavLink
+          to="/contact"
+          className="flex hover:scale-105 flex-col items-center gap-1"
+        >
           <p className="uppercase">Contact</p>
           <hr className="w-3/4 border-none h-[1.3px] bg-gray-800 hidden" />
         </NavLink>
       </ul>
 
       <div className="flex items-center gap-6">
-        <img
-          alt="search icon"
-          src={assets.search_icon}
-          className="w-5 cursor-pointer"
-        />
+        <Link to="/collections">
+          <img
+            alt="search icon"
+            src={assets.search_icon}
+            className="w-5 cursor-pointer"
+            onClick={toggleSearch}
+          />
+        </Link>
 
         <div className="group relative">
           <img
@@ -69,7 +91,7 @@ const Navbar = () => {
           <img src={assets.cart_icon} alt="cart" className="w-5 min-w-5" />
 
           <p className="absolute right-[-5px] bottom-[-5px] bg-black p-2 leading-4 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs font-semibold">
-            2
+            {getCartCount()}
           </p>
         </Link>
 
@@ -102,7 +124,7 @@ const Navbar = () => {
             <hr className="w-full border-none h-[1.3px] bg-gray-500 mt-2" />
             <NavLink
               to={"/"}
-              className="flex flex-col items-center gap-1 mt-30 "
+              className="flex hover:scale-110 flex-col items-center gap-1 mt-30 "
             >
               <p className="uppercase hover:text-red-500">Home</p>
               <hr className="w-full border-none h-[1.3px] bg-gray-300" />
@@ -110,15 +132,15 @@ const Navbar = () => {
 
             <NavLink
               to={"/about"}
-              className="flex flex-col items-center gap-1 mt-10"
+              className="flex hover:scale-110 flex-col items-center gap-1 mt-10"
             >
               <p className="uppercase">about</p>
               <hr className="w-full border-none h-[1.3px] bg-gray-300" />
             </NavLink>
 
             <NavLink
-              to={"/collection"}
-              className="flex flex-col items-center gap-1 mt-10"
+              to={"/collections"}
+              className="flex hover:scale-110 flex-col items-center gap-1 mt-10"
             >
               <p className="uppercase">collections</p>
               <hr className="w-full border-none h-[1.3px] bg-gray-300" />
@@ -126,7 +148,7 @@ const Navbar = () => {
 
             <NavLink
               to={"/contact"}
-              className="flex flex-col items-center gap-1 mt-10"
+              className="flex hover:scale-110 flex-col items-center gap-1 mt-10"
             >
               <p className="uppercase">contact</p>
               <hr className="w-full border-none h-[1.3px] bg-gray-300" />

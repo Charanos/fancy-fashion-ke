@@ -1,5 +1,7 @@
-import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 
 const ProductItem = ({ id, image, name, price }) => {
@@ -7,8 +9,11 @@ const ProductItem = ({ id, image, name, price }) => {
 
   return (
     <Link
-      to={`/product/${id}`}
-      className="cursor-pointer mt-6 flex flex-col items-start justify-between p-6 bg-gray-100 rounded-xl shadow-[8px_8px_16px_#d1d1d1,_-8px_-8px_16px_#ffffff]  transition-all duration-300"
+      to={`/products/${id}`}
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+      className="cursor-pointer mt-6 flex flex-col items-start justify-between p-6 bg-white rounded-xl shadow-[8px_8px_16px_#d1d1d1,_-8px_-8px_16px_#ffffff]  transition-all duration-300 "
     >
       <div className="overflow-hidden">
         <img
@@ -18,7 +23,7 @@ const ProductItem = ({ id, image, name, price }) => {
         />
       </div>
 
-      <p className="text-sm pt-4 pb-2">{name}</p>
+      <p className="text-sm pt-4 pb-2 font-medium">{name}</p>
 
       <p className="text-sm font-bold text-gray-800">
         {currency} {price}
